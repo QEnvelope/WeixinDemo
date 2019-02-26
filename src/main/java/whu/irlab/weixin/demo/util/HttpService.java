@@ -60,6 +60,9 @@ public class HttpService {
         try {
             String answer = qaEngineResponse.getAnswer().getContent();
             if (answer != null) {
+                if (answer.startsWith("请输入你的问题，小布会把它转给咨询老师，老师会尽快回复")) {
+                    answer = "小布很抱歉，微信暂不支持直接转人工咨询，如果有需要，您可以在武汉大学图书馆公众号留言，老师会尽快回复";
+                }
                 return answer;
             }else {
                 return "很抱歉，小布也不知道诶";
