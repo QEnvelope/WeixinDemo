@@ -24,9 +24,14 @@ public class QaEngineRequest {
 
     private String original;
     /**
-     * 是否推送推荐问题。ture：是 false：否
+     * 是否推送推荐问题。true：是 false：否
      */
     private boolean recommended;
+
+    public QaEngineRequest(String userId, String msg) {
+        this.userId = userId;
+        this.msg = msg;
+    }
 
     public String getUserId() {
         return userId;
