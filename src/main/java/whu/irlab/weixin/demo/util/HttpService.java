@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import whu.irlab.weixin.demo.model.QaEngineRequest;
 import whu.irlab.weixin.demo.model.QaEngineResponse;
+import whu.irlab.weixin.demo.model.WechatResponse;
+import whu.irlab.weixin.demo.util.redis.RedisUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public class HttpService {
 
     @Autowired
     private RestTemplate restTemplate;
+
 
     /**
      * 访问中控
@@ -84,4 +87,5 @@ public class HttpService {
         }
         return "很抱歉，小布现在无法提供咨询服务哦";
     }
+
 }

@@ -45,6 +45,20 @@ public class WechatController {
         return wechatService.processRequest(httpServletRequest);
     }
 
+    /**
+     * 发送消息到用户
+     * @return
+     */
+    @RequestMapping(value = "/send",method = RequestMethod.POST)
+    public String sendMsgToUser(@RequestParam(value = "userId")String userId,@RequestParam(value = "text")String text){
+        boolean hasSent = wechatService.sendTextToUser(userId,text);
+        if(hasSent){
+            return "success";
+        }
+        else return "failed";
+
+    }
+
     @RequestMapping("/hello")
     public String index(){
         return "hello world!";
