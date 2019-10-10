@@ -46,7 +46,7 @@ public class SetWechatAccessToken {
     private RedisUtils redisUtils;
 
     /**
-     * 定时更新access_token
+     * 定时更新access_token,时间间隔为1小时
      */
     @Scheduled(fixedRate = 3600000)
     private void updateAccessToken(){
@@ -63,8 +63,8 @@ public class SetWechatAccessToken {
     }
 
     private String getAccessToken(){
-        url = initRequestAccessTokenUrl(url);
-        AccessToken accessToken = restTemplate.getForObject(url,AccessToken.class);
+        String requestUrl = initRequestAccessTokenUrl(url);
+        AccessToken accessToken = restTemplate.getForObject(requestUrl,AccessToken.class);
         try{
             String token = accessToken.getAccess_token();
             log.info("获得新的微信access_token，新的token为："+token);
@@ -76,8 +76,8 @@ public class SetWechatAccessToken {
     }
 
     private String initRequestAccessTokenUrl(String url){
-        url = url+appId+"&secret="+appSecret;
+        String requestUrl = url+appId+"&secret="+appSecret;
 
-        return url;
+        return requestUrl;
     }
 }
